@@ -1,0 +1,32 @@
+{
+  "name": "@jcbhmr/md-html",
+  "version": "1.0.1",
+  "description": "📝 Write raw Markdown in .md.html files that gets auto-rendered everywhere",
+  "license": "MIT",
+  "author": "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)",
+  "type": "module",
+  "main": "dist/index.iife.js",
+  "files": ["dist"],
+  "scripts": {
+    "build-docs": "mkdir -p docs/dist && cp test/index.demo.md.html docs/dist/index.html",
+    "prepack": "vite build",
+    "start": "conc 'test/server.js' 'vite build -w'",
+    "pretest": "bash -c 'prettier -w --ignore-path <(cat .prettierignore .gitignore) .'",
+    "test": "tsc --noEmit && echo 'Make sure a human tests the demo!'"
+  },
+  "dependencies": {
+    "@types/marked": "^4.0.8",
+    "console.style": "^0.2.2",
+    "p-event": "^5.0.1",
+    "latex.js": "^0.12.4"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "prettier": "latest",
+    "prettier-plugin-jsdoc": "latest",
+    "prettier-plugin-packagejson": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vite-plugin-css-injected-by-js": "^3.1.0"
+  }
+}
