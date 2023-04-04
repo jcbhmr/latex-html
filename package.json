@@ -1,12 +1,14 @@
 {
   "name": "@jcbhmr/md-html",
   "version": "1.0.1",
-  "description": "📝 Write raw Markdown in .md.html files that gets auto-rendered everywhere",
+  "description": "📄 Write LaTeX in a .html file without build tools or an HTTP server",
   "license": "MIT",
   "author": "Jacob Hummer <jcbhmr@outlook.com> (https://jcbhmr.me/)",
   "type": "module",
   "main": "dist/index.iife.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build-docs": "mkdir -p docs/dist && cp test/index.demo.md.html docs/dist/index.html",
     "prepack": "vite build",
@@ -17,8 +19,8 @@
   "dependencies": {
     "@types/marked": "^4.0.8",
     "console.style": "^0.2.2",
-    "p-event": "^5.0.1",
-    "latex.js": "^0.12.4"
+    "latex.js": "^0.12.4",
+    "p-event": "^5.0.1"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
