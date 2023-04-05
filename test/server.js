@@ -2,9 +2,10 @@
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 
-const server = http.createServer(async (req, res) => {
-  if (req.path === "/") {
-    let html = await readFile("test/index.demo.tex.html");
+const server = createServer(async (req, res) => {
+  console.log(req.method, req.url);
+  if (req.url === "/") {
+    let html = await readFile("test/index.demo.tex.html", "utf-8");
     html = html.replace(
       '<script src="https://unpkg.com/@jcbhmr/tex-html"></script>',
       '<script src="/https://unpkg.com/@jcbhmr/tex-html"></script>'
@@ -13,7 +14,7 @@ const server = http.createServer(async (req, res) => {
     res.end(html);
     return;
   }
-  if (req.path === "/https://unpkg.com/@jcbhmr/tex-html") {
+  if (req.url === "/https://unpkg.com/@jcbhmr/tex-html") {
     const js = await readFile("dist/index.iife.js");
     res.setHeader("Content-Type", "text/javascript;charset=utf-8");
     res.end(js);

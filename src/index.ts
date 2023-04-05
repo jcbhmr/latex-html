@@ -1,6 +1,6 @@
 import { pEvent } from "p-event";
 import { parse as parseLatex, HtmlGenerator } from "latex.js";
-// import "./index.scss";
+import "./index.scss";
 import "console.style";
 // @ts-ignore
 import consoleMessage from "./consoleMessage.txt?raw";
@@ -32,11 +32,18 @@ async function main(): Promise<any> {
     const fragment = generated.domFragment();
 
     plaintext.replaceWith(fragment);
+    document.head.append(
+      generator.stylesAndScripts(
+        "https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/"
+      )
+    );
     script.remove();
 
     const headHTML = `
       <meta charset="UTF-8" />
-      <title>${document.querySelector("h1")?.textContent ?? "Document"}</title>
+      <title>${
+        document.querySelector(".title")?.textContent ?? "Document"
+      }</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     `;
     document.head.insertAdjacentHTML("afterbegin", headHTML);
