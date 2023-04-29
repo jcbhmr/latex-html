@@ -1,3 +1,5 @@
+![🚧 Under construction 👷‍♂️](https://i.imgur.com/LEP2R3N.png)
+
 # Local HTML LaTeX environment
 
 📄 Write LaTeX in a `.html` file without build tools or an HTTP server
